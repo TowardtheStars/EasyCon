@@ -11,10 +11,24 @@
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)-->
         <vm:MainWindowViewModel/>
-    </Design.DataContext>
+		 设计时数据上下文 -->
+	</Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<StackPanel Margin="10">
+		<!-- ComboBox 绑定 Items 和 SelectedItem -->
+		<ComboBox
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding SelectedItem}"
+            Width="200"
+            Margin="0,10"/>
+
+		<!-- 可选：添加按钮刷新数据 -->
+		<Button
+            Content="刷新数据"
+            Command="{Binding RefreshCommand}"
+            Width="100"/>
+	</StackPanel>
 
 </Window>

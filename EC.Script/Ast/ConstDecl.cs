@@ -8,7 +8,7 @@ internal sealed class ConstDecl : Statement
     {
     }
 
-    public override AstNodeType Kind => throw new NotImplementedException();
+    public override AstNodeType Kind => AstNodeType.ConstDeclaration;
 
     public override T Accept<T>(IAstVisitor<T> visitor)
     {

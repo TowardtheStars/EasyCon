@@ -5,6 +5,7 @@ namespace EC.Capture;
 internal class OpenCVCapture
 {
     private readonly VideoCapture videoCapture = new();
+    private Mat _frame = new();
 
     public OpenCVCapture(int idx)
     {
@@ -19,14 +20,17 @@ internal class OpenCVCapture
     {
         if (videoCapture.IsOpened())
         {
-            using var m = videoCapture.RetrieveMat();
-            if (!m.Empty())
-            {
-                m.ToBytes();
-                string strbaser64 = Convert.ToBase64String(m.ToBytes());
-            }
+            videoCapture.Read(_frame);
+            return _frame; // should check _frame.Empty()
+
+            //using var m = videoCapture.RetrieveMat();
+            //if (!m.Empty())
+            //{
+            //    m.ToBytes();
+            //    string strbaser64 = Convert.ToBase64String(m.ToBytes());
+            //}
         }
         
-        return new Mat(); // should check m.Empty()
+        return new Mat();
     }
 }

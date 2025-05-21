@@ -11,7 +11,7 @@ internal sealed class UnaryExpr : Expression
     public SyntaxToken Op { get; init; }
     public Expression Expr { get; init; }
 
-    public override AstNodeType Kind => throw new NotImplementedException();
+    public override AstNodeType Kind => AstNodeType.UnaryExpression;
 
     public override T Accept<T>(IAstVisitor<T> visitor)
     {

@@ -24,7 +24,7 @@ internal sealed class BinaryExpr : Expression
         return visitor.VisitBinary(this);
     }
 
-    private static Dictionary<string, BinaryOperator> s_OperatorMap = new Dictionary<string, BinaryOperator>
+    private static Dictionary<string, BinaryOperator> s_OperatorMap = new()
     {
         ["+"] = BinaryOperator.Add,
         ["-"] = BinaryOperator.Substract,
